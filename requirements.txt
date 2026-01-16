@@ -1,0 +1,17 @@
+langchain
+langchain-community
+langchain-core
+openai
+pypdf
+tiktoken
+aiofiles
+fastapi
+uvicorn
+jinja2
+python-multipart
+PyPDF2
+faiss-cpu
+python-dotenv
+google-generativeai
+langchain_google_genai
+# -e . # Install the package in the current directory in editable mode

@@ -1,3 +1,14 @@
+test.txt
+q&a sys
+q&a project.drawio.png
+.env
+note.txt
+data/
+venv/
+__pycache__/
+.idea/
+.vscode/
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[codz]
