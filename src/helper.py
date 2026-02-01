@@ -6,7 +6,7 @@ from langchain_classic.prompts import PromptTemplate
 from langchain_classic.chains.summarize import load_summarize_chain
 from langchain_google_genai import GoogleGenerativeAIEmbeddings
 from langchain_classic.vectorstores import FAISS
-from langchain_classic.chains import retrieval_qa
+from langchain_classic.chains import RetrievalQA
 from langchain_google_genai import ChatGoogleGenerativeAI
 import os
 from dotenv import load_dotenv
@@ -81,7 +81,7 @@ def llm_pipeline(file_path):
     questions = question_gen_chain.run(document_quiz_gen)
 
     # Create embeddings for the answer generation
-    embeddings = GoogleGenerativeAIEmbeddings(model="gemini-2.5-flash-lite")
+    embeddings = GoogleGenerativeAIEmbeddings(model="gemini-embedding-001")
 
     # Create a vector store from the documents for answer generation
     vector_store = FAISS.from_documents(document_answer_gen, embeddings)
@@ -96,12 +96,12 @@ def llm_pipeline(file_path):
     filtered_quiz_list = [element for element in quiz_list if element.endswith("?") or element.endswith(".")]
 
 
-    answre_genaration_chain = retrieval_qa.RetrievalQA.from_chain_type(
+    answer_generation_chain = RetrievalQA.from_chain_type(
         llm=llm_ans_gen_pipeline,
         chain_type="stuff",
         retriever=vector_store.as_retriever(),
         return_source_documents=True,
     )
 
-    return filtered_quiz_list, answre_genaration_chain
+    return answer_generation_chain, filtered_quiz_list
     

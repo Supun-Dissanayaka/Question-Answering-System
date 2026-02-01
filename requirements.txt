@@ -14,4 +14,4 @@ faiss-cpu
 python-dotenv
 google-generativeai
 langchain_google_genai
-# -e . # Install the package in the current directory in editable mode
+-e . # Install the package in the current directory in editable mode
